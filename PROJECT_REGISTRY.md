@@ -66,24 +66,26 @@ Registro centrale dei fingerprint tecnici. Non contiene secret o dati cliente.
 
 ## PARI — VERIFIED ENTREPRENEURS COMMUNITY
 
-**Status:** PRODUCT BOOTSTRAP — v0.1 scaffold validated locally; production forbidden; staging provisioning pending.
+**Status:** MANAGED BOOTSTRAP — private repository active; v0.4 imported to `main`; staging branch prepared; production forbidden.
 
 - Product thesis: local-first verified community for entrepreneurs / self-employed professionals; user-created PARI Tables, recurring city network, explicit intentions `LOVE / BUSINESS / OPEN / SOCIAL`, private reciprocal post-event matching.
 - Prototype source: `PARI - app standalone.html` supplied in ChatGPT on 2026-08-24; prototype is design/product reference only, not production source of truth.
-- Repository: `UNVERIFIED / NOT YET CREATED`
-- Intended repository visibility: `PRIVATE`
-- Intended production branch: `main`
-- Intended governance branch: `governance/software-house-setup`
+- Repository: `raoulragazzi-cmyk/pari`
+- Repository visibility: `PRIVATE` — verified 2026-08-24
+- Current GitHub default branch metadata: `splendoria.vip` — historical account anomaly; must be normalized to `main` before GitHub-connected deploy.
+- Source-of-truth branch: `main`
+- Staging branch: `staging`
+- Imported baseline: v0.4 governance-ready
 - Intended staging Worker: `pari-staging`
 - Intended staging D1: `pari-staging-db`
 - Production Worker: `NOT CREATED`
 - Production D1: `NOT CREATED`
 - Production domain: `UNVERIFIED`
 - Health endpoint: `/api/health`
-- Initial core entities: members, availability, tables, table_requests, post_event_intents, matches.
+- D1 entities: members, availability, tables, table_requests, post_event_intents, matches, consent_records, member_blocks, reports, reliability_events, host_profiles, venues, invitations, product_events.
 - North Star Metric: `Meaningful Meetings` — completed real-world meetings that generate positive follow-up / reciprocal connection; swipes are not a primary KPI.
 - Protected areas: identity and entrepreneur verification, dating preferences, relationship/sexual-orientation data, exact location, post-event intent, blocking/reporting, host moderation, no-show/reliability logic, membership/billing, deletion/export/consent.
-- Data rule: no real romantic/personal profile data may be published from prototype/demo content; each Founding Member must explicitly approve their production profile.
+- Data rule: staging remains synthetic-only until real auth/session, 18+ auditable consent, privacy controls, moderation, delete/export and verification gates pass.
 - Product rule: hosts create experiences; PARI governs trust/access. No public star rating of people. No forced referrals. No forced romance.
 - Launch rule: city density before expansion; do not publicly activate a city without sufficient verified members, trained hosts, upcoming viable tables and reciprocal compatibility.
 - Deployment rule: staging only until privacy/safety review, deletion/export flows, moderation, real founding-member consent and a successful real-world pilot are completed.
