@@ -66,23 +66,27 @@ Registro centrale dei fingerprint tecnici. Non contiene secret o dati cliente.
 
 ## PARI — VERIFIED ENTREPRENEURS COMMUNITY
 
-**Status:** MANAGED BOOTSTRAP — private repository active; v0.4 imported to `main`; staging branch prepared; production forbidden.
+**Status:** MANAGED BOOTSTRAP — private repository active; v0.4 on `main`; M2 trust/security work in draft PR; production forbidden.
 
 - Product thesis: local-first verified community for entrepreneurs / self-employed professionals; user-created PARI Tables, recurring city network, explicit intentions `LOVE / BUSINESS / OPEN / SOCIAL`, private reciprocal post-event matching.
 - Prototype source: `PARI - app standalone.html` supplied in ChatGPT on 2026-08-24; prototype is design/product reference only, not production source of truth.
 - Repository: `raoulragazzi-cmyk/pari`
 - Repository visibility: `PRIVATE` — verified 2026-08-24
-- Current GitHub default branch metadata: `splendoria.vip` — historical account anomaly; must be normalized to `main` before GitHub-connected deploy.
-- Source-of-truth branch: `main`
+- Default/source-of-truth branch: `main` — normalized and verified 2026-08-24
 - Staging branch: `staging`
+- Governance branch: `governance/software-house-setup`
+- Active trust/security branch: `feature/m2-trust-auth`
+- Active draft PR: `#4 M2: Trust, Auth & Verification foundation`
 - Imported baseline: v0.4 governance-ready
+- GitHub CI: active; validates JS, migrations, synthetic seed, M2 entrypoint and secret-file exclusions
 - Intended staging Worker: `pari-staging`
 - Intended staging D1: `pari-staging-db`
 - Production Worker: `NOT CREATED`
 - Production D1: `NOT CREATED`
 - Production domain: `UNVERIFIED`
 - Health endpoint: `/api/health`
-- D1 entities: members, availability, tables, table_requests, post_event_intents, matches, consent_records, member_blocks, reports, reliability_events, host_profiles, venues, invitations, product_events.
+- D1 entities now cover marketplace, trust and security: members, availability, tables, table_requests, post_event_intents, matches, consent_records, member_blocks, reports, reliability_events, host_profiles, venues, invitations, product_events, auth_login_challenges, auth_sessions, verification_cases, member_privacy, data_subject_requests, moderation_actions, security_rate_limits, security_events.
+- M2 security source includes passwordless auth/session, server-side actor enforcement, same-origin mutation gate, Turnstile Siteverify integration, rate-limit abstraction, security audit events and login/report/invitation throttling hooks.
 - North Star Metric: `Meaningful Meetings` — completed real-world meetings that generate positive follow-up / reciprocal connection; swipes are not a primary KPI.
 - Protected areas: identity and entrepreneur verification, dating preferences, relationship/sexual-orientation data, exact location, post-event intent, blocking/reporting, host moderation, no-show/reliability logic, membership/billing, deletion/export/consent.
 - Data rule: staging remains synthetic-only until real auth/session, 18+ auditable consent, privacy controls, moderation, delete/export and verification gates pass.
