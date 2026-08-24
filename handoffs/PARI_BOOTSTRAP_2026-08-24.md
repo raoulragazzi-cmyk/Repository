@@ -23,20 +23,20 @@ PARI combines:
 9. Reliability protects the group from no-shows; it is not a popularity score.
 10. Local density before geographic expansion.
 
-## v0.1 technical scaffold completed locally
+## v0.2 pilot scaffold completed locally
 Validated locally on 2026-08-24:
-- `wrangler.jsonc` for Cloudflare Worker + Static Assets + D1
-- `migrations/0001_core.sql`
-- `src/worker.js`
-- `public/index.html`
-- `public/styles.css`
-- `public/app.js`
-- `README.md`
-- `docs/PRODUCT_RULES.md`
+- Cloudflare Worker + Static Assets architecture
+- D1 migrations `0001_core.sql` + `0002_pilot_controls.sql`
+- synthetic-only staging seed
+- mobile-first member UI
+- Host request/attendance control panel
+- Weekend Sync UI
+- match inbox UI
+- JavaScript syntax validation
+- sequential SQLite validation of both migrations + seed
 
-Syntax validation passed for Worker and browser JS. D1 migration was executed successfully against an in-memory SQLite compatibility check and produced the expected core tables.
-
-## Core D1 entities
+## D1 entities
+Core:
 - members
 - availability
 - tables
@@ -44,50 +44,85 @@ Syntax validation passed for Worker and browser JS. D1 migration was executed su
 - post_event_intents
 - matches
 
-## Core v0.1 API
+Pilot controls:
+- consent_records
+- member_blocks
+- reports
+- reliability_events
+
+## v0.2 API coverage
+Discovery / tables:
 - `GET /api/health`
+- `GET /api/cities`
 - `GET /api/tables`
 - `POST /api/tables`
 - `POST /api/tables/:id/request`
-- `POST /api/tables/:id/intent`
+- `GET /api/tables/:id/requests`
+- `POST /api/tables/:id/requests/:memberId`
+- `POST /api/tables/:id/cancel`
 
-## Safety / privacy gates before production
-Production is blocked until all of the following are implemented and reviewed:
-- 18+ gate
+Attendance / reliability:
+- `POST /api/tables/:id/attendance/:memberId`
+
+Weekend Sync:
+- `PUT /api/members/:id/availability`
+- `GET /api/weekend-sync`
+
+Post-event matching:
+- `POST /api/tables/:id/intent`
+- `GET /api/matches`
+
+Safety / consent primitives:
+- `POST /api/members/:id/consent`
+- `POST /api/members/:id/block/:otherId`
+- `DELETE /api/members/:id/block/:otherId`
+- `POST /api/reports`
+
+## M1 logic implemented locally
+Verified member → discovers local PARI Table → requests a seat → Host accepts/waitlists/declines → capacity-safe control → attendance/no-show → reliability ledger → private post-event intent → reciprocal Business/Love/Both Match.
+
+Additional safeguards already encoded:
+- automatic first waitlist promotion after accepted-member cancellation
+- post-event intent rejected unless both members attended the same table
+- blocked pairs excluded from discovery/matching
+- reliability bounded to 0–100
+- synthetic profiles only in staging seed
+
+## Safety / privacy gates before real personal data or production
+Production remains blocked until all of the following are implemented and reviewed:
+- production-grade auth/session layer
+- 18+ gate and auditable consent
 - identity verification design
 - entrepreneur / VAT verification design
-- consent and privacy disclosures
-- sensitive-data minimization
-- block/report/moderation
+- privacy disclosures and granular sensitive-data consent
 - delete/export account flows
 - exact-location protection
 - real Founding Member approval for personal/romantic profile data
-- host moderation and appeal rules
-- reliability/no-show policy
-- auth/session hardening
+- admin moderation queue and appeal rules
+- rate limiting / Turnstile on abuse-sensitive endpoints
 - billing boundaries
 
 ## Deployment governance
-- staging Worker intended: `pari-staging`
-- staging D1 intended: `pari-staging-db`
+- intended staging Worker: `pari-staging`
+- intended staging D1: `pari-staging-db`
 - production Worker: NOT CREATED
 - production D1: NOT CREATED
 - production domain: UNVERIFIED
-- production deploy: FORBIDDEN until staging acceptance and product/safety gates pass
+- production deploy: FORBIDDEN until staging acceptance and safety gates pass
+- current staging code policy: SYNTHETIC DATA ONLY because auth is not yet production-grade
 
 ## Repository blocker
-A dedicated PARI repository does not yet exist in the connected GitHub account. The current GitHub connector can write to existing repositories but does not expose repository creation. Do not place PARI source inside VinoVeritas, Splendoria or 247Agent repositories. Create a dedicated private repository (recommended name: `PARI`) and then import the validated v0.1 scaffold there.
-
-## Immediate next milestone
-`M1 — Real local marketplace loop`
-
-Member verified → discovers local PARI Table → requests a seat → Host/PARI composition → attends → private post-event intent → reciprocal Business/Love/Both Match.
+A dedicated PARI repository does not yet exist in the connected GitHub account as of the latest check on 2026-08-24. The current GitHub connector can write to existing repositories but does not expose repository creation. Do not place PARI source inside VinoVeritas, Splendoria or 247Agent repositories. Create a dedicated private repository (recommended exact name: `PARI`) and then import the validated v0.2 scaffold there.
 
 ## Commercial validation target
 Before adding complex AI matching, prove one city / cluster can sustain repeated real-world meetings with:
-- verified members,
-- trained hosts,
+- 40–60 verified pilot members,
+- 4 trained Hosts,
+- 3 suitable venues,
 - recurring Friday/Saturday inventory,
 - low no-show rate,
 - meaningful second meetings,
 - willingness to pay for access/events/membership.
+
+## North-star pilot metric
+`Meaningful Meetings`: real meetings followed by a mutually positive desire to reconnect for BUSINESS, LOVE or BOTH.
