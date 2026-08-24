@@ -23,17 +23,22 @@ PARI combines:
 9. Reliability protects the group from no-shows; it is not a popularity score.
 10. Local density before geographic expansion.
 
-## v0.2 pilot scaffold completed locally
+## v0.3 pilot scaffold completed locally
 Validated locally on 2026-08-24:
 - Cloudflare Worker + Static Assets architecture
-- D1 migrations `0001_core.sql` + `0002_pilot_controls.sql`
+- D1 migrations `0001_core.sql`, `0002_pilot_controls.sql`, `0003_growth_loop.sql`
 - synthetic-only staging seed
-- mobile-first member UI
-- Host request/attendance control panel
+- mobile-first Member UI
+- Host request / attendance control panel
 - Weekend Sync UI
-- match inbox UI
+- reciprocal match inbox
+- city-health pilot dashboard
+- Host progression primitives
+- venue registry primitives
+- founding / host invitation primitives
+- funnel telemetry primitives
 - JavaScript syntax validation
-- sequential SQLite validation of both migrations + seed
+- sequential SQLite validation of all migrations + seed
 
 ## D1 entities
 Core:
@@ -44,13 +49,20 @@ Core:
 - post_event_intents
 - matches
 
-Pilot controls:
+Safety / pilot controls:
 - consent_records
 - member_blocks
 - reports
 - reliability_events
 
-## v0.2 API coverage
+Growth / local marketplace:
+- host_profiles
+- venues
+- invitations
+- product_events
+- `v_city_pilot_metrics` view
+
+## v0.3 API coverage
 Discovery / tables:
 - `GET /api/health`
 - `GET /api/cities`
@@ -72,11 +84,16 @@ Post-event matching:
 - `POST /api/tables/:id/intent`
 - `GET /api/matches`
 
-Safety / consent primitives:
+Safety / consent:
 - `POST /api/members/:id/consent`
 - `POST /api/members/:id/block/:otherId`
 - `DELETE /api/members/:id/block/:otherId`
 - `POST /api/reports`
+
+Growth / city health:
+- `GET /api/venues`
+- `GET /api/hosts/:memberId`
+- `GET /api/metrics/pilot`
 
 ## M1 logic implemented locally
 Verified member → discovers local PARI Table → requests a seat → Host accepts/waitlists/declines → capacity-safe control → attendance/no-show → reliability ledger → private post-event intent → reciprocal Business/Love/Both Match.
@@ -86,7 +103,25 @@ Additional safeguards already encoded:
 - post-event intent rejected unless both members attended the same table
 - blocked pairs excluded from discovery/matching
 - reliability bounded to 0–100
+- telemetry failures never break member flows
 - synthetic profiles only in staging seed
+
+## Local marketplace layer
+PARI now measures whether a city deserves to scale rather than optimizing raw registrations. Pilot city health includes:
+- active members
+- active Hosts
+- candidate/partner venues
+- table creation
+- seat requests / accepts
+- attendance and no-show rate
+- Meaningful Matches
+
+Supporting operating documents in the v0.3 package:
+- `HOST_OPERATING_MODEL.md`
+- `PILOT_ECONOMICS.md`
+- `FOUNDER_SALES_BRIEF.md`
+- `CITY_LAUNCH_PLAYBOOK.md`
+- `M1_BACKLOG.md`
 
 ## Safety / privacy gates before real personal data or production
 Production remains blocked until all of the following are implemented and reviewed:
@@ -112,7 +147,7 @@ Production remains blocked until all of the following are implemented and review
 - current staging code policy: SYNTHETIC DATA ONLY because auth is not yet production-grade
 
 ## Repository blocker
-A dedicated PARI repository does not yet exist in the connected GitHub account as of the latest check on 2026-08-24. The current GitHub connector can write to existing repositories but does not expose repository creation. Do not place PARI source inside VinoVeritas, Splendoria or 247Agent repositories. Create a dedicated private repository (recommended exact name: `PARI`) and then import the validated v0.2 scaffold there.
+A dedicated PARI repository does not yet exist in the connected GitHub account as of the latest check on 2026-08-24. The current GitHub connector can write to existing repositories but does not expose repository creation. Do not place PARI source inside VinoVeritas, Splendoria or 247Agent repositories. Create a dedicated private repository with exact recommended name `PARI`, then import the validated v0.3 scaffold.
 
 ## Commercial validation target
 Before adding complex AI matching, prove one city / cluster can sustain repeated real-world meetings with:
