@@ -96,28 +96,32 @@ Registro centrale dei fingerprint tecnici. Non contiene secret o dati cliente.
 
 ## SOMMELIER ACADEMY
 
-**Status:** BOOTSTRAP v0.0.6 GREEN + CLOUDFLARE WORKER/R2 LIVE FAIL-CLOSED — PostgreSQL/Hyperdrive qualification, Vectorize/AI Gateway and dedicated private GitHub repository still pending.
+**Status:** BOOTSTRAP v0.0.7 GREEN + CLOUDFLARE WORKER/R2 EU-ONLY LIVE FAIL-CLOSED — PostgreSQL/Hyperdrive qualification, Vectorize/AI Gateway and dedicated private GitHub repository still pending.
 
 - Canonical project name: `SOMMELIER ACADEMY`
 - Intended repository: `raoulragazzi-cmyk/sommelier-academy`
 - Intended repository visibility: `PRIVATE`
 - Dedicated repository status: `NOT CREATED` — connector lacks create-repository; browser unauthenticated; GitHub Actions native token returned HTTP 403 `Resource not accessible by integration`
 - Remote canonical Git SHA: `NOT YET ESTABLISHED`
-- Canonical Master Project: ChatGPT Library `/Projects/SOMMELIER_ACADEMY/SOMMELIER_ACADEMY_MASTER_PROJECT.md` — v0.10
-- Canonical implementation bootstrap: ChatGPT Library `/Projects/SOMMELIER_ACADEMY/implementation/sommelier-academy-bootstrap-v0.0.6.zip`
-- Local verification: `56/56 tests PASS`; 30 JS modules checked; 7 immutable SHA-256-pinned migrations; 38/38 schema tables semantic isolation PASS
-- PostgreSQL runtime policy: `academy_runtime`, least privilege on 10 first-slice tables + 2 app functions; no SUPERUSER/BYPASSRLS/CREATEDB/CREATEROLE/REPLICATION
-- Database credential rule: `STAGING_MIGRATION_DATABASE_URL` and `STAGING_RUNTIME_DATABASE_URL` are separate; Hyperdrive may use the runtime URL only
-- Migration execution baseline: advisory lock + migration ledger + hash verification + idempotent runtime-role/grant bootstrap prepared
-- Tenant-isolation baseline: synthetic tenant A/B fixture + reused PostgreSQL runtime-client probe prepared; real PostgreSQL and Hyperdrive pool execution still pending
+- Canonical Master Project: ChatGPT Library `/Projects/SOMMELIER_ACADEMY/SOMMELIER_ACADEMY_MASTER_PROJECT.md` — v0.11
+- Canonical implementation bootstrap: ChatGPT Library `/Projects/SOMMELIER_ACADEMY/implementation/sommelier-academy-bootstrap-v0.0.7.zip`
+- Local verification: `66/66 tests PASS`; 30 JS modules checked; 7 immutable SHA-256-pinned migrations; 38/38 schema tables semantic isolation PASS
+- PostgreSQL runtime policy: `academy_runtime`, least privilege on 10 first-slice tables + 2 app functions; LOGIN + NOINHERIT; no SUPERUSER/BYPASSRLS/CREATEDB/CREATEROLE/REPLICATION
+- Database credential rule: `STAGING_MIGRATION_DATABASE_URL` and `STAGING_RUNTIME_DATABASE_URL` are separate; TLS required; Hyperdrive may use the runtime URL only
+- Managed-provider rule: if the provider pre-creates `academy_runtime`, bootstrap verifies attributes + real login without requiring migration `CREATEROLE`; privilege escalation is forbidden as a convenience workaround
+- Runtime transaction rule: transaction-local search path + statement timeout + idle-in-transaction timeout + tenant/principal context; no external AI/network work while DB transaction is open
+- Migration execution baseline: advisory lock + migration ledger + hash verification + runtime grant bootstrap prepared
+- Tenant-isolation baseline: synthetic tenant A/B fixture + reused PostgreSQL runtime-client probe prepared; Hyperdrive HYP-T01–HYP-T08 plan prepared
 - Architecture: Cloudflare Workers + PostgreSQL via Hyperdrive + R2 + Vectorize + Durable Objects only for coordinated/live state + AI Gateway
 - System of record: PostgreSQL; Vectorize is derived/non-authoritative
 - Staging Worker: `sommelier-academy-api-staging` — LIVE
 - Staging runtime: `https://sommelier-academy-api-staging.raoulragazzi.workers.dev`
-- Current Worker Version ID: `159986c1-d700-4e6b-adc6-a1ac4b474706`
-- Bootstrap runtime version: `0.0.6`
-- Runtime checks: `/livez` PASS; `/healthz` PASS with `ready:false`; `/readyz` EXPECTED 503 fail-closed; `/version` PASS; `/r2-check` PASS
-- Staging R2: `sommelier-academy-staging-objects` — LIVE, EU jurisdiction
+- Current Worker Version ID: `bdfbaac9-768d-46cb-93e0-8e96674e287f`
+- Bootstrap runtime version: `0.0.7`
+- Runtime checks: `/livez` PASS; `/healthz` PASS with `ready:false`; `/readyz` EXPECTED 503 fail-closed; `/version` PASS; `/r2-check` PASS with expected jurisdiction EU
+- Staging R2: `sommelier-academy-staging-objects` — LIVE EU-only, location `EEUR`, binding `jurisdiction=eu`
+- R2 residency incident 2026-09-23: RESOLVED, NO DATA IMPACT — empty default/ENAM duplicate created by earlier bootstrap was identified, exact-matched and deleted after EU rebind; default now 404, EU preserved
+- R2 provisioning guardrail: audit `default/eu/us` before create; same-name off-target jurisdiction causes `R2_JURISDICTION_COLLISION` fail-closed
 - PostgreSQL staging: `NOT PROVISIONED`
 - Hyperdrive staging: `NOT PROVISIONED`
 - Vectorize target: `sommelier-academy-staging-knowledge` — `NOT PROVISIONED`
