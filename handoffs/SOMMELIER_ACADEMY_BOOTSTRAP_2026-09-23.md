@@ -13,7 +13,7 @@ Status: local bootstrap v0.0.4 green; provisioning-as-code ready; remote dedicat
 ## Local implementation baseline
 
 - Branch: `main`
-- HEAD: `75b09b8c8e2b2b07a342f0c76593b82a61bdf0a1`
+- HEAD: `81de761d2a09a7a6576aa1430eb8d0002aa220f3`
 - Bootstrap package: `sommelier-academy-bootstrap-v0.0.4.zip`
 - Tests: 34/34 PASS
 - Migration checks: PASS
@@ -105,3 +105,17 @@ Bootstrap v0.0.4 now includes:
 - Wrangler config renderer + remote verifier
 - GitHub Actions staging workflow
 - no committed credentials
+
+
+## Least-privilege Cloudflare token target
+
+Initial bootstrap:
+- Workers product Admin only because the staging Worker does not yet exist
+- Workers R2 Storage Write
+- Vectorize Write
+- Hyperdrive Write
+- AI Gateway Read + Edit
+- Workers AI Read
+
+After staging Worker creation, reduce Workers role to Editor if create/delete rights are no longer needed.
+No Workers Routes/DNS permission is required while staging remains on workers.dev.
