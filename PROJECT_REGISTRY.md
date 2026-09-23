@@ -101,12 +101,12 @@ Registro centrale dei fingerprint tecnici. Non contiene secret o dati cliente.
 - Canonical project name: `SOMMELIER ACADEMY`
 - Intended repository: `raoulragazzi-cmyk/sommelier-academy`
 - Intended repository visibility: `PRIVATE`
-- Dedicated repository status: `NOT CREATED` — GitHub connector has no create-repository action; browser session is not authenticated
+- Dedicated repository status: `NOT CREATED` — connector lacks create-repository; browser unauthenticated; GitHub Actions native token attempt returned HTTP 403 `Resource not accessible by integration`
 - Local Git branch: `main`
-- Local bootstrap HEAD: `81de761d2a09a7a6576aa1430eb8d0002aa220f3`
+- Local bootstrap source snapshot: `v0.0.5` (pre-remote canonical repo)
 - Canonical Master Project: ChatGPT Library `/Projects/SOMMELIER_ACADEMY/SOMMELIER_ACADEMY_MASTER_PROJECT.md`
 - Canonical implementation bootstrap: ChatGPT Library `/Projects/SOMMELIER_ACADEMY/implementation/sommelier-academy-bootstrap-v0.0.4.zip`
-- Local verification status: `34/34 tests PASS`; migration checks PASS; isolation manifest covers all 38 bootstrap tables
+- Local verification status: `36/36 tests PASS`; migration checks PASS; isolation manifest covers all 38 bootstrap tables
 - Architecture: Cloudflare Workers + PostgreSQL via Hyperdrive + R2 + Vectorize + Durable Objects only for coordinated/live state + AI Gateway
 - System of record: PostgreSQL; Vectorize is derived/non-authoritative
 - Staging Worker: `sommelier-academy-api-staging` — LIVE on workers.dev
