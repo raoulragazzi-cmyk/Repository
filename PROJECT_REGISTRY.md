@@ -109,10 +109,10 @@ Registro centrale dei fingerprint tecnici. Non contiene secret o dati cliente.
 - Local verification status: `34/34 tests PASS`; migration checks PASS; isolation manifest covers all 38 bootstrap tables
 - Architecture: Cloudflare Workers + PostgreSQL via Hyperdrive + R2 + Vectorize + Durable Objects only for coordinated/live state + AI Gateway
 - System of record: PostgreSQL; Vectorize is derived/non-authoritative
-- Intended staging Worker: `sommelier-academy-api-staging`
-- Intended staging R2: `sommelier-academy-staging-objects`
-- Intended staging Vectorize: `sommelier-academy-staging-knowledge`
-- Intended AI Gateway ID: `sommelier-academy-staging`
+- Staging Worker: `sommelier-academy-api-staging` — LIVE on workers.dev
+- Staging R2: `sommelier-academy-staging-objects` — LIVE, EU jurisdiction, binding smoke PASS
+- Intended staging Vectorize: `sommelier-academy-staging-knowledge` — NOT PROVISIONED
+- Intended AI Gateway ID: `sommelier-academy-staging` — NOT PROVISIONED
 - PostgreSQL staging: `NOT PROVISIONED` — Neon dedicated staging connection identified, user authorization pending
 - Hyperdrive staging: `NOT PROVISIONED`
 - Cloudflare capability status: canonical account verified; existing token reads R2 but receives 403 for Vectorize/Hyperdrive/AI Gateway; dedicated Academy staging token required
