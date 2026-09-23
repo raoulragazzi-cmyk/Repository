@@ -1,7 +1,7 @@
 # SOMMELIER ACADEMY — Bootstrap handoff
 
 Date: 2026-09-23
-Status: local implementation bootstrap green; remote GitHub repository and Cloudflare staging pending authenticated account access.
+Status: local bootstrap v0.0.4 green; provisioning-as-code ready; remote dedicated credentials/connections pending.
 
 ## Canonical identity
 
@@ -13,8 +13,8 @@ Status: local implementation bootstrap green; remote GitHub repository and Cloud
 ## Local implementation baseline
 
 - Branch: `main`
-- HEAD: `f08afd1f852132c760dc965b01d337ddffe9790f`
-- Bootstrap package: `sommelier-academy-bootstrap-v0.0.3.zip`
+- HEAD: `75b09b8c8e2b2b07a342f0c76593b82a61bdf0a1`
+- Bootstrap package: `sommelier-academy-bootstrap-v0.0.4.zip`
 - Tests: 34/34 PASS
 - Migration checks: PASS
 - Isolation manifest: 38/38 bootstrap tables classified
@@ -79,3 +79,29 @@ No resources were created or modified.
 12. Only then mark Academy Engine MVP as staging-qualified.
 
 This handoff contains no secrets, credentials or customer data.
+
+
+## Verified remote diagnostics
+
+### Cloudflare
+Read-only diagnostics were run through a temporary VinoVeritas branch and then the branch was reset to current main. No Cloudflare mutation occurred.
+
+- canonical account fingerprint: verified
+- R2 list with existing token: HTTP 200
+- Vectorize list: HTTP 403
+- Hyperdrive list: HTTP 403
+- AI Gateway list: HTTP 403
+- conclusion: existing token is not an approved/general Academy provisioning credential
+
+### PostgreSQL
+PostgreSQL remains mandatory as the system of record. Neon is the preferred dedicated staging candidate available through ChatGPT connection; it is not yet connected.
+
+### Provisioning automation
+Bootstrap v0.0.4 now includes:
+- fail-closed private GitHub repo create/push script
+- Cloudflare R2/Vectorize/Hyperdrive/AI Gateway provisioning
+- Hyperdrive caching disabled by default
+- EU R2 default
+- Wrangler config renderer + remote verifier
+- GitHub Actions staging workflow
+- no committed credentials
