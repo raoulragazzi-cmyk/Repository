@@ -94,6 +94,34 @@ Registro centrale dei fingerprint tecnici. Non contiene secret o dati cliente.
 - Launch rule: city density before expansion; do not publicly activate a city without sufficient verified members, trained hosts, upcoming viable tables and reciprocal compatibility.
 - Deployment rule: staging only until privacy/safety review, deletion/export flows, moderation, real founding-member consent and a successful real-world pilot are completed.
 
+## SOMMELIER ACADEMY
+
+**Status:** LOCAL IMPLEMENTATION BOOTSTRAP GREEN — dedicated private GitHub repository and Cloudflare staging are blocked only by external authentication.
+
+- Canonical project name: `SOMMELIER ACADEMY`
+- Intended repository: `raoulragazzi-cmyk/sommelier-academy`
+- Intended repository visibility: `PRIVATE`
+- Dedicated repository status: `NOT CREATED` — GitHub connector has no create-repository action; browser session is not authenticated
+- Local Git branch: `main`
+- Local bootstrap HEAD: `f08afd1f852132c760dc965b01d337ddffe9790f`
+- Canonical Master Project: ChatGPT Library `/Projects/SOMMELIER_ACADEMY/SOMMELIER_ACADEMY_MASTER_PROJECT.md`
+- Canonical implementation bootstrap: ChatGPT Library `/Projects/SOMMELIER_ACADEMY/implementation/sommelier-academy-bootstrap-v0.0.3.zip`
+- Local verification status: `34/34 tests PASS`; migration checks PASS; isolation manifest covers all 38 bootstrap tables
+- Architecture: Cloudflare Workers + PostgreSQL via Hyperdrive + R2 + Vectorize + Durable Objects only for coordinated/live state + AI Gateway
+- System of record: PostgreSQL; Vectorize is derived/non-authoritative
+- Intended staging Worker: `sommelier-academy-api-staging`
+- Intended staging R2: `sommelier-academy-staging-objects`
+- Intended staging Vectorize: `sommelier-academy-staging-knowledge`
+- Intended AI Gateway ID: `sommelier-academy-staging`
+- PostgreSQL staging: `NOT PROVISIONED`
+- Hyperdrive staging: `NOT PROVISIONED`
+- Cloudflare authentication status: `BLOCKED` — dashboard browser session currently requires sign-in
+- Protected areas: tenant isolation, membership/capabilities/entitlements, assessment-secure content, examiner decisions, credential issuing, source provenance, learner sensory evidence, audit trail
+- Certification rule: Tutor mastery can never issue credentials; professional certification requires controlled assessment evidence and human authority
+- IP rule: third-party training material may be used only as restricted internal reference where lawful; learner-facing content must be original or explicitly licensed
+- Deployment rule: no production deploy. First cloud step is synthetic-only staging, followed by RLS/tenant isolation, backup/restore, audit readback, AI evaluation, accessibility and rollback qualification
+- Repository rule: do not place SOMMELIER ACADEMY application code inside VinoVeritas, 247agent-copilot, Splendoria, PARI or this public Control Room repository
+
 ---
 
 ## New project rule
