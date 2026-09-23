@@ -96,16 +96,16 @@ Registro centrale dei fingerprint tecnici. Non contiene secret o dati cliente.
 
 ## SOMMELIER ACADEMY
 
-**Status:** LOCAL IMPLEMENTATION BOOTSTRAP GREEN — dedicated private GitHub repository and Cloudflare staging are blocked only by external authentication.
+**Status:** LOCAL BOOTSTRAP v0.0.4 GREEN — provisioning-as-code ready; dedicated GitHub/Cloudflare/PostgreSQL connections still pending.
 
 - Canonical project name: `SOMMELIER ACADEMY`
 - Intended repository: `raoulragazzi-cmyk/sommelier-academy`
 - Intended repository visibility: `PRIVATE`
 - Dedicated repository status: `NOT CREATED` — GitHub connector has no create-repository action; browser session is not authenticated
 - Local Git branch: `main`
-- Local bootstrap HEAD: `f08afd1f852132c760dc965b01d337ddffe9790f`
+- Local bootstrap HEAD: `75b09b8c8e2b2b07a342f0c76593b82a61bdf0a1`
 - Canonical Master Project: ChatGPT Library `/Projects/SOMMELIER_ACADEMY/SOMMELIER_ACADEMY_MASTER_PROJECT.md`
-- Canonical implementation bootstrap: ChatGPT Library `/Projects/SOMMELIER_ACADEMY/implementation/sommelier-academy-bootstrap-v0.0.3.zip`
+- Canonical implementation bootstrap: ChatGPT Library `/Projects/SOMMELIER_ACADEMY/implementation/sommelier-academy-bootstrap-v0.0.4.zip`
 - Local verification status: `34/34 tests PASS`; migration checks PASS; isolation manifest covers all 38 bootstrap tables
 - Architecture: Cloudflare Workers + PostgreSQL via Hyperdrive + R2 + Vectorize + Durable Objects only for coordinated/live state + AI Gateway
 - System of record: PostgreSQL; Vectorize is derived/non-authoritative
@@ -113,9 +113,10 @@ Registro centrale dei fingerprint tecnici. Non contiene secret o dati cliente.
 - Intended staging R2: `sommelier-academy-staging-objects`
 - Intended staging Vectorize: `sommelier-academy-staging-knowledge`
 - Intended AI Gateway ID: `sommelier-academy-staging`
-- PostgreSQL staging: `NOT PROVISIONED`
+- PostgreSQL staging: `NOT PROVISIONED` — Neon dedicated staging connection identified, user authorization pending
 - Hyperdrive staging: `NOT PROVISIONED`
-- Cloudflare authentication status: `BLOCKED` — dashboard browser session currently requires sign-in
+- Cloudflare capability status: canonical account verified; existing token reads R2 but receives 403 for Vectorize/Hyperdrive/AI Gateway; dedicated Academy staging token required
+- Cloudflare read-only diagnostic: no mutations performed; R2 GET 200, Vectorize/Hyperdrive/AI Gateway GET 403; temporary VinoVeritas branch reset to main after test
 - Protected areas: tenant isolation, membership/capabilities/entitlements, assessment-secure content, examiner decisions, credential issuing, source provenance, learner sensory evidence, audit trail
 - Certification rule: Tutor mastery can never issue credentials; professional certification requires controlled assessment evidence and human authority
 - IP rule: third-party training material may be used only as restricted internal reference where lawful; learner-facing content must be original or explicitly licensed
