@@ -96,32 +96,38 @@ Registro centrale dei fingerprint tecnici. Non contiene secret o dati cliente.
 
 ## SOMMELIER ACADEMY
 
-**Status:** LOCAL BOOTSTRAP v0.0.4 GREEN — provisioning-as-code and least-privilege token matrix ready; dedicated GitHub/Cloudflare/PostgreSQL connections still pending.
+**Status:** BOOTSTRAP v0.0.6 GREEN + CLOUDFLARE WORKER/R2 LIVE FAIL-CLOSED — PostgreSQL/Hyperdrive qualification, Vectorize/AI Gateway and dedicated private GitHub repository still pending.
 
 - Canonical project name: `SOMMELIER ACADEMY`
 - Intended repository: `raoulragazzi-cmyk/sommelier-academy`
 - Intended repository visibility: `PRIVATE`
-- Dedicated repository status: `NOT CREATED` — connector lacks create-repository; browser unauthenticated; GitHub Actions native token attempt returned HTTP 403 `Resource not accessible by integration`
-- Local Git branch: `main`
-- Local bootstrap source snapshot: `v0.0.5` (pre-remote canonical repo)
-- Canonical Master Project: ChatGPT Library `/Projects/SOMMELIER_ACADEMY/SOMMELIER_ACADEMY_MASTER_PROJECT.md`
-- Canonical implementation bootstrap: ChatGPT Library `/Projects/SOMMELIER_ACADEMY/implementation/sommelier-academy-bootstrap-v0.0.4.zip`
-- Local verification status: `36/36 tests PASS`; migration checks PASS; isolation manifest covers all 38 bootstrap tables
+- Dedicated repository status: `NOT CREATED` — connector lacks create-repository; browser unauthenticated; GitHub Actions native token returned HTTP 403 `Resource not accessible by integration`
+- Remote canonical Git SHA: `NOT YET ESTABLISHED`
+- Canonical Master Project: ChatGPT Library `/Projects/SOMMELIER_ACADEMY/SOMMELIER_ACADEMY_MASTER_PROJECT.md` — v0.10
+- Canonical implementation bootstrap: ChatGPT Library `/Projects/SOMMELIER_ACADEMY/implementation/sommelier-academy-bootstrap-v0.0.6.zip`
+- Local verification: `56/56 tests PASS`; 30 JS modules checked; 7 immutable SHA-256-pinned migrations; 38/38 schema tables semantic isolation PASS
+- PostgreSQL runtime policy: `academy_runtime`, least privilege on 10 first-slice tables + 2 app functions; no SUPERUSER/BYPASSRLS/CREATEDB/CREATEROLE/REPLICATION
+- Database credential rule: `STAGING_MIGRATION_DATABASE_URL` and `STAGING_RUNTIME_DATABASE_URL` are separate; Hyperdrive may use the runtime URL only
+- Migration execution baseline: advisory lock + migration ledger + hash verification + idempotent runtime-role/grant bootstrap prepared
+- Tenant-isolation baseline: synthetic tenant A/B fixture + reused PostgreSQL runtime-client probe prepared; real PostgreSQL and Hyperdrive pool execution still pending
 - Architecture: Cloudflare Workers + PostgreSQL via Hyperdrive + R2 + Vectorize + Durable Objects only for coordinated/live state + AI Gateway
 - System of record: PostgreSQL; Vectorize is derived/non-authoritative
-- Staging Worker: `sommelier-academy-api-staging` — LIVE on workers.dev
-- Staging R2: `sommelier-academy-staging-objects` — LIVE, EU jurisdiction, binding smoke PASS
-- Intended staging Vectorize: `sommelier-academy-staging-knowledge` — NOT PROVISIONED
-- Intended AI Gateway ID: `sommelier-academy-staging` — NOT PROVISIONED
-- PostgreSQL staging: `NOT PROVISIONED` — Neon dedicated staging connection identified, user authorization pending
+- Staging Worker: `sommelier-academy-api-staging` — LIVE
+- Staging runtime: `https://sommelier-academy-api-staging.raoulragazzi.workers.dev`
+- Current Worker Version ID: `159986c1-d700-4e6b-adc6-a1ac4b474706`
+- Bootstrap runtime version: `0.0.6`
+- Runtime checks: `/livez` PASS; `/healthz` PASS with `ready:false`; `/readyz` EXPECTED 503 fail-closed; `/version` PASS; `/r2-check` PASS
+- Staging R2: `sommelier-academy-staging-objects` — LIVE, EU jurisdiction
+- PostgreSQL staging: `NOT PROVISIONED`
 - Hyperdrive staging: `NOT PROVISIONED`
-- Cloudflare capability status: canonical account verified; existing token reads R2 but receives 403 for Vectorize/Hyperdrive/AI Gateway; dedicated Academy staging token required
-- Cloudflare read-only diagnostic: no mutations performed; R2 GET 200, Vectorize/Hyperdrive/AI Gateway GET 403; temporary VinoVeritas branch reset to main after test
-- Cloudflare Academy token target: Workers product Admin only for initial Worker creation, then downgrade to Editor; R2 Write, Vectorize Write, Hyperdrive Write, AI Gateway Read/Edit, Workers AI Read; no zone route/DNS permissions initially
+- Vectorize target: `sommelier-academy-staging-knowledge` — `NOT PROVISIONED`
+- AI Gateway target: `sommelier-academy-staging` — `NOT PROVISIONED`
+- Existing Cloudflare operational token capability: Workers deploy + R2 read/write PASS; Vectorize/Hyperdrive/AI Gateway API access 403; do not treat it as the final Academy full-stack credential
+- Cloudflare Academy token target: Workers product Admin only for initial creation if needed, then Editor; R2 Write, Vectorize Write, Hyperdrive Write, AI Gateway Read/Edit, Workers AI Read; no DNS/route permissions initially
 - Protected areas: tenant isolation, membership/capabilities/entitlements, assessment-secure content, examiner decisions, credential issuing, source provenance, learner sensory evidence, audit trail
-- Certification rule: Tutor mastery can never issue credentials; professional certification requires controlled assessment evidence and human authority
+- Certification rule: Tutor mastery can never issue professional credentials; certification requires controlled assessment evidence and human authority
 - IP rule: third-party training material may be used only as restricted internal reference where lawful; learner-facing content must be original or explicitly licensed
-- Deployment rule: no production deploy. First cloud step is synthetic-only staging, followed by RLS/tenant isolation, backup/restore, audit readback, AI evaluation, accessibility and rollback qualification
+- Deployment rule: no production deploy. Full staging remains unqualified until PostgreSQL, migrations, runtime grants, Hyperdrive pooled tenant isolation, Vectorize, AI Gateway, identity, backup/restore, AI eval, accessibility and rollback are green
 - Repository rule: do not place SOMMELIER ACADEMY application code inside VinoVeritas, 247agent-copilot, Splendoria, PARI or this public Control Room repository
 
 ---
