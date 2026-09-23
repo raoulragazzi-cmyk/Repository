@@ -96,14 +96,14 @@ Registro centrale dei fingerprint tecnici. Non contiene secret o dati cliente.
 
 ## SOMMELIER ACADEMY
 
-**Status:** LOCAL BOOTSTRAP v0.0.4 GREEN — provisioning-as-code ready; dedicated GitHub/Cloudflare/PostgreSQL connections still pending.
+**Status:** LOCAL BOOTSTRAP v0.0.4 GREEN — provisioning-as-code and least-privilege token matrix ready; dedicated GitHub/Cloudflare/PostgreSQL connections still pending.
 
 - Canonical project name: `SOMMELIER ACADEMY`
 - Intended repository: `raoulragazzi-cmyk/sommelier-academy`
 - Intended repository visibility: `PRIVATE`
 - Dedicated repository status: `NOT CREATED` — GitHub connector has no create-repository action; browser session is not authenticated
 - Local Git branch: `main`
-- Local bootstrap HEAD: `75b09b8c8e2b2b07a342f0c76593b82a61bdf0a1`
+- Local bootstrap HEAD: `81de761d2a09a7a6576aa1430eb8d0002aa220f3`
 - Canonical Master Project: ChatGPT Library `/Projects/SOMMELIER_ACADEMY/SOMMELIER_ACADEMY_MASTER_PROJECT.md`
 - Canonical implementation bootstrap: ChatGPT Library `/Projects/SOMMELIER_ACADEMY/implementation/sommelier-academy-bootstrap-v0.0.4.zip`
 - Local verification status: `34/34 tests PASS`; migration checks PASS; isolation manifest covers all 38 bootstrap tables
@@ -117,6 +117,7 @@ Registro centrale dei fingerprint tecnici. Non contiene secret o dati cliente.
 - Hyperdrive staging: `NOT PROVISIONED`
 - Cloudflare capability status: canonical account verified; existing token reads R2 but receives 403 for Vectorize/Hyperdrive/AI Gateway; dedicated Academy staging token required
 - Cloudflare read-only diagnostic: no mutations performed; R2 GET 200, Vectorize/Hyperdrive/AI Gateway GET 403; temporary VinoVeritas branch reset to main after test
+- Cloudflare Academy token target: Workers product Admin only for initial Worker creation, then downgrade to Editor; R2 Write, Vectorize Write, Hyperdrive Write, AI Gateway Read/Edit, Workers AI Read; no zone route/DNS permissions initially
 - Protected areas: tenant isolation, membership/capabilities/entitlements, assessment-secure content, examiner decisions, credential issuing, source provenance, learner sensory evidence, audit trail
 - Certification rule: Tutor mastery can never issue credentials; professional certification requires controlled assessment evidence and human authority
 - IP rule: third-party training material may be used only as restricted internal reference where lawful; learner-facing content must be original or explicitly licensed
