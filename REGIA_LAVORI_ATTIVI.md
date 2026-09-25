@@ -14,7 +14,7 @@ Ordine: VinoVeritas, Copilot 247Agent, Sommelier digitale, Splendoria, Sommelier
 | VV-RELEASE-01 | Sessione regia: analisi della baseline e PR486 | Diagnosi causale e verifica locale; ambiente in sola lettura | Riconciliazione della baseline e qualifica del candidato |
 | COP-RELEASE-01 | Sessioni di prodotto sulle PR574/576/577/578/580; regia PR581 | Dipendenze, composizione locale e revisione delle prove | Un unico candidato integrato qualificato |
 | SOM-RELEASE-01 | Tranche RC5 coordinata, titolare dello staging secondo issue424 | Sola lettura e revisione delle consegne | Qualifica esatta del candidato RC5 corrente |
-| SPL-RELEASE-01 | Sessioni di prodotto conservate; regia prepara un controllo locale | Preflight offline e proposta circoscritta, senza push applicativo | Percorso di consegna e ambiente isolati verificati |
+| SPL-RELEASE-01 | Sessioni di prodotto conservate; regia prepara un controllo locale | Preflight offline verificato; esclusione nativa del solo ramo regia applicata e riletta, senza push applicativo | Altre automazioni e ambiente isolato da verificare |
 | ACA-CHRISTMAS-01 | Sessione Academy titolare del Master; regia supporta prerequisiti | Ricognizione accessi e dipendenze, nessun bootstrap parallelo | Sorgente riproducibile e target staging qualificabile |
 
 Le sessioni di prodotto non sono sub-agenti controllabili da questo registro. Le assegnazioni della regia riguardano i propri sotto-incarichi; una nuova sessione deve confermare nel task privato l'adozione di un incarico senza sovrascrivere la titolarità esistente.
