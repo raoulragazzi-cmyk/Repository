@@ -21,7 +21,7 @@ Le sessioni di prodotto non sono sub-agenti controllabili da questo registro. Le
 
 ## Riferimenti di riconciliazione
 - VinoVeritas: PR486, sorgente candidato `00b8a9e6ab0a1b31942df87f015d84f718d5fc4d`; non è una release produttiva.
-- Copilot: `main ce3842e22d29409aa0a7217ff0b4484fa3af8422` include #580. PR583 head `7ad7150deb55e13f27a83a435ff7c1845f8204c1` ha qualification reale Workers AI/Kimi PASS e tutti i workflow PASS dopo rerun same-SHA del flake #572; resta review in corso. PR581 head `899a17c61a70b1226ea0618265a7222d87a6750a` mantiene evidenza valida solo per la tranche scheduler CAS ed è INVALIDATA_DA_DRIFT per la composizione finché non viene ricomposta sul candidato corrente.
+- Copilot: `main ce3842e22d29409aa0a7217ff0b4484fa3af8422` include #580. PR583 head `7ad7150deb55e13f27a83a435ff7c1845f8204c1` ha qualification reale Workers AI/Kimi PASS e tutti i workflow PASS dopo rerun same-SHA del flake #572; è pronta per review Semantic ma il successore post-#572 deve includere #585 (referente causale ambiguo dopo priorità) e riqualificare #508. PR581 head `899a17c61a70b1226ea0618265a7222d87a6750a` mantiene evidenza valida solo per la tranche scheduler CAS ed è INVALIDATA_DA_DRIFT per la composizione finché non viene ricomposta sul candidato corrente.
 - Sommelier: PR487 integrata nel branch `release/sommelier-intent-routing-424-rc5-20260925`, candidato osservato `4a5d09381056cee7257ef0a9dc3ba38d8b7023fd`. Le precedenti RC restano evidenze storiche.
 - Splendoria: le patch locali non sono una release; consultare il pacchetto privato della regia e l'ultima baseline canonica.
 - Academy: Master canonico v0.18; distinguere progettazione, baseline locale e qualifica runtime.
