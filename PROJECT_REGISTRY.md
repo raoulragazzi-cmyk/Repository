@@ -107,7 +107,7 @@ Audit snapshot 2026-09-25 for VinoVeritas, Copilot, Splendoria and Sommelier Aca
 - Dedicated repository status: `NOT CREATED` — connector lacks create-repository; browser unauthenticated; GitHub Actions native token returned HTTP 403 `Resource not accessible by integration`
 - Remote canonical Git SHA: `NOT YET ESTABLISHED`
 - Canonical Master Project: ChatGPT Library `/SOMMELIER_ACADEMY_MASTER_PROJECT.md` — v0.18 documentation correction. The older `/Projects/SOMMELIER_ACADEMY/` master is retained as historical evidence, not the current execution instruction.
-- Current local implementation package: ChatGPT Library `/sommelier-academy-bootstrap-v0.0.13.zip`; documented SHA-256 `5c3e20b53ae1db4503d6cc762431baba45984f1c28c80bf77fb06736001ac34b`. Deployed Worker remains v0.0.7.
+- Current local implementation package: ChatGPT Library `/Projects/SOMMELIER_ACADEMY/implementation/sommelier-academy-bootstrap-v0.0.13.zip`; documented SHA-256 `5c3e20b53ae1db4503d6cc762431baba45984f1c28c80bf77fb06736001ac34b`. Deployed Worker remains v0.0.7.
 - Local verification evidence dated 2026-09-24: `100/100 tests PASS`; 38 JS modules checked; 9 immutable SHA-256-pinned migrations; 40 classified tables; runtime contract 10 tables + 2 functions + 19 RLS policies. These are documented local results, not remote PostgreSQL qualification; not independently rerun in the 2026-09-25 audit.
 - PostgreSQL runtime policy: `academy_runtime`, least privilege on 10 first-slice tables + 2 app functions; LOGIN + NOINHERIT; no SUPERUSER/BYPASSRLS/CREATEDB/CREATEROLE/REPLICATION
 - Database credential rule: `STAGING_MIGRATION_DATABASE_URL` and `STAGING_RUNTIME_DATABASE_URL` are separate; TLS required; Hyperdrive may use the runtime URL only
