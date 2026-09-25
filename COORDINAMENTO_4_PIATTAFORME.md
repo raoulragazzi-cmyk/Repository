@@ -65,3 +65,6 @@ Usare questo messaggio insieme al task concreto:
 
 ## Limiti del presidio
 La presenza di questo documento non attiva controlli periodici, notifiche o un agente permanente. Durante una sessione attiva la regia può rileggere gli strumenti condivisi; un presidio continuativo richiede automazione effettivamente configurata, destinatari autorizzati e gestione degli allarmi.
+
+## Registro degli incarichi correnti
+Per gli incarichi attivi, i riferimenti di riconciliazione e le dipendenze leggere [REGIA_LAVORI_ATTIVI.md](REGIA_LAVORI_ATTIVI.md) nello stesso branch della PR4. Il Sommelier digitale ha una linea di rilascio distinta all'interno di VinoVeritas. Il registro non trasferisce la titolarità degli ambienti né concede autorità di deploy; prima di agire prevale la consegna più recente nel task privato del prodotto.
